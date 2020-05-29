@@ -19,7 +19,6 @@ class Postdetails extends StatelessWidget {
                 children: <Widget>[
                   Container(
                     width: double.infinity,
-                    // height: 600,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20.0)),
@@ -31,8 +30,11 @@ class Postdetails extends StatelessWidget {
                           Container(
                             child: Column(
                               children: <Widget>[
-                               
-                                IconButton(icon: Icon(Icons.arrow_back), onPressed: (){Navigator.pop(context);}),
+                                // IconButton(
+                                //     icon: Icon(Icons.arrow_back),
+                                //     onPressed: () {
+                                //       Navigator.pop(context);
+                                //     }),
                                 ListTile(
                                   leading: CircleAvatar(
                                     radius: 30,
@@ -62,47 +64,54 @@ class Postdetails extends StatelessWidget {
                                 SizedBox(
                                   height: 20,
                                 ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Row(
-                                      children: <Widget>[
-                                        IconButton(
-                                            icon: Icon(Icons.favorite_border),
-                                            iconSize: 30,
-                                            onPressed: () {
-                                              print('object');
-                                            }),
-                                        Text("2120"),
-                                        SizedBox(
-                                          width: 20,
-                                        ),
-                                        IconButton(
-                                            icon: Icon(Icons.chat),
-                                            iconSize: 30,
-                                            onPressed: () {
-                                              print('object');
-                                            }),
-                                        Text("212"),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: <Widget>[
-                                        IconButton(
-                                            icon: Icon(Icons.bookmark_border),
-                                            iconSize: 30,
-                                            onPressed: () {
-                                              print('object');
-                                            }),
-                                      ],
-                                    ),
-                                  ],
-                                ),
                               ],
                             ),
                           ),
                         ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: 400,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20.0)),
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: <Widget>[
+                            _comment(
+                                user: 'Tamer',
+                                image: '2.jpg',
+                                comt: 'beautiful'),
+                            _comment(
+                                user: 'Ali',
+                                image: '4.jpg',
+                                comt: 'Your ara awsome'),
+                            _comment(
+                                user: 'Hassan',
+                                image: 'a.jpg',
+                                comt: 'beautiful'),
+                            _comment(
+                                user: 'Said',
+                                image: '8.jpg',
+                                comt: 'Dm Please'),
+                            _comment(
+                                user: 'Said',
+                                image: '8.jpg',
+                                comt: 'Dm Please'),
+                            _comment(
+                                user: 'Said',
+                                image: '8.jpg',
+                                comt: 'Dm Please'),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -116,11 +125,11 @@ class Postdetails extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20.0)),
                     child: Padding(
                       padding:
-                          EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                          EdgeInsets.symmetric(vertical: 20, horizontal: 5),
                       child: TextField(
                         decoration: InputDecoration(
                           prefixIcon: Padding(
-                            padding: EdgeInsets.only(right: 25),
+                            padding: EdgeInsets.only(right: 20),
                             child: CircleAvatar(
                               radius: 25,
                               backgroundImage: AssetImage('images/${user}'),
@@ -142,41 +151,11 @@ class Postdetails extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20.0)),
-                    child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                      child: Column(
-                        children: <Widget>[
-                          _comment(
-                              user: 'Tamer', image: '2.jpg', comt: 'beautiful'),
-                          _comment(
-                              user: 'Ali',
-                              image: '4.jpg',
-                              comt: 'Your ara awsome'),
-                          _comment(
-                              user: 'Hassan',
-                              image: 'a.jpg',
-                              comt: 'beautiful'),
-                          _comment(
-                              user: 'Said', image: '8.jpg', comt: 'Dm Please'),
-                        ],
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ),
           ),
         ),
-        bottomNavigationBar: BottomBarF(),
       ),
     );
   }
@@ -194,6 +173,7 @@ Widget _comment({String user, String image, String comment, String comt}) {
       subtitle: Text("${comt}"),
       trailing: IconButton(
           icon: Icon(Icons.favorite_border),
+          iconSize: 17,
           onPressed: () {
             print('more');
           }),
