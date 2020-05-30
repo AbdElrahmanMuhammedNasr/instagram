@@ -11,9 +11,8 @@ class Posts extends StatefulWidget {
 }
 
 class _PostsState extends State<Posts> {
-
   @override
-  void initState(){
+  void initState() {
     super.initState();
   }
 
@@ -44,7 +43,7 @@ class _PostsState extends State<Posts> {
                       trailing: IconButton(
                           icon: Icon(Icons.more_vert),
                           onPressed: () {
-                            print('more');
+                            _showOptions();
                           }),
                     ),
                     SizedBox(
@@ -124,5 +123,64 @@ class _PostsState extends State<Posts> {
         ),
       ),
     );
+  }
+
+  _showOptions() {
+    showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return Container(
+            margin: EdgeInsets.all(20),
+            height: 200,
+            decoration: BoxDecoration(
+              // borderRadius: BorderRadius.circular(20)
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                RaisedButton.icon(
+                  color: Colors.blueGrey[500],
+                  onPressed: () {},
+                  colorBrightness: Brightness.dark,
+                  icon: Icon(Icons.remove_circle),
+                  label: Text(
+                    'Hide',
+                    style: TextStyle(letterSpacing: 1),
+                  ),
+                ),
+                RaisedButton.icon(
+                  color: Colors.blueGrey[600],
+                  onPressed: () {},
+                  colorBrightness: Brightness.dark,
+                  icon: Icon(Icons.report),
+                  label: Text(
+                    'Report',
+                    style: TextStyle(letterSpacing: 1),
+                  ),
+                ),
+                RaisedButton.icon(
+                  color: Colors.blueGrey[700],
+                  onPressed: () {},
+                  colorBrightness: Brightness.dark,
+                  icon: Icon(Icons.remove_red_eye),
+                  label: Text(
+                    'UnFollow',
+                    style: TextStyle(letterSpacing: 1),
+                  ),
+                ),
+                RaisedButton.icon(
+                  color: Colors.red,
+                  onPressed: () {},
+                  colorBrightness: Brightness.dark,
+                  icon: Icon(Icons.block),
+                  label: Text(
+                    'Block',
+                    style: TextStyle(letterSpacing: 1),
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
   }
 }
