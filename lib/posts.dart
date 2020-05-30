@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:instegram/PostDetails.dart';
 
-class Posts extends StatelessWidget {
+class Posts extends StatefulWidget {
   String user;
   String post;
   Posts({this.user, this.post});
+
+  @override
+  _PostsState createState() => _PostsState();
+}
+
+class _PostsState extends State<Posts> {
+
+  @override
+  void initState(){
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +37,7 @@ class Posts extends StatelessWidget {
                     ListTile(
                       leading: CircleAvatar(
                         radius: 30,
-                        backgroundImage: AssetImage('images/${user}'),
+                        backgroundImage: AssetImage('images/${widget.user}'),
                       ),
                       title: Text('Abdo Nasr'),
                       subtitle: Text("5 min"),
@@ -39,24 +50,15 @@ class Posts extends StatelessWidget {
                     SizedBox(
                       height: 10,
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => Postdetails(
-                                  user: user,
-                                  post: post,
-                                )));
-                      },
-                      child: Container(
-                        width: double.infinity,
-                        height: 400,
-                        decoration: BoxDecoration(
-                          color: Colors.black12,
-                          // borderRadius: BorderRadius.circular(20),
-                          image: DecorationImage(
-                              image: AssetImage('images/${post}'),
-                              fit: BoxFit.fill),
-                        ),
+                    Container(
+                      width: double.infinity,
+                      height: 400,
+                      decoration: BoxDecoration(
+                        color: Colors.black12,
+                        // borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                            image: AssetImage('images/${widget.post}'),
+                            fit: BoxFit.fill),
                       ),
                     ),
                     SizedBox(
@@ -89,7 +91,12 @@ class Posts extends StatelessWidget {
                                   ),
                                   iconSize: 30,
                                   onPressed: () {
-                                    print('object');
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(
+                                            builder: (context) => Postdetails(
+                                                  user: widget.user,
+                                                  post: widget.post,
+                                                )));
                                   }),
                             ],
                           ),

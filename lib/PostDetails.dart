@@ -2,10 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:instegram/common/AppBarForm.dart';
 import 'package:instegram/common/BottomBarform.dart';
 
-class Postdetails extends StatelessWidget {
+class Postdetails extends StatefulWidget {
   String user;
   String post;
   Postdetails({this.user, this.post});
+
+  @override
+  _PostdetailsState createState() => _PostdetailsState();
+}
+
+class _PostdetailsState extends State<Postdetails> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -39,7 +50,7 @@ class Postdetails extends StatelessWidget {
                                   leading: CircleAvatar(
                                     radius: 30,
                                     backgroundImage:
-                                        AssetImage('images/${user}'),
+                                        AssetImage('images/${widget.user}'),
                                   ),
                                   title: Text('Abdo Nasr'),
                                   subtitle: Text("5 min"),
@@ -57,7 +68,8 @@ class Postdetails extends StatelessWidget {
                                     color: Colors.black12,
                                     borderRadius: BorderRadius.circular(20),
                                     image: DecorationImage(
-                                        image: AssetImage('images/${post}'),
+                                        image:
+                                            AssetImage('images/${widget.post}'),
                                         fit: BoxFit.fill),
                                   ),
                                 ),
@@ -132,7 +144,8 @@ class Postdetails extends StatelessWidget {
                             padding: EdgeInsets.only(right: 20),
                             child: CircleAvatar(
                               radius: 25,
-                              backgroundImage: AssetImage('images/${user}'),
+                              backgroundImage:
+                                  AssetImage('images/${widget.user}'),
                             ),
                           ),
                           suffixIcon: IconButton(
