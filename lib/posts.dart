@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instegram/PostDetails.dart';
+import 'package:instegram/Profile.dart';
 
 class Posts extends StatefulWidget {
   String user;
@@ -11,6 +12,9 @@ class Posts extends StatefulWidget {
 }
 
 class _PostsState extends State<Posts> {
+  bool book = false;
+  bool love = false;
+
   @override
   void initState() {
     super.initState();
@@ -49,15 +53,23 @@ class _PostsState extends State<Posts> {
                     SizedBox(
                       height: 10,
                     ),
-                    Container(
-                      width: double.infinity,
-                      height: 400,
-                      decoration: BoxDecoration(
-                        color: Colors.black12,
-                        // borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
-                            image: AssetImage('images/${widget.post}'),
-                            fit: BoxFit.fill),
+                    GestureDetector(
+                      onDoubleTap: () {
+                        setState(() {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => Profile(),));
+                          love = !love;
+                        });
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        height: 400,
+                        decoration: BoxDecoration(
+                          color: Colors.black12,
+                          // borderRadius: BorderRadius.circular(20),
+                          image: DecorationImage(
+                              image: AssetImage('images/${widget.post}'),
+                              fit: BoxFit.fill),
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -71,13 +83,20 @@ class _PostsState extends State<Posts> {
                           Row(
                             children: <Widget>[
                               IconButton(
-                                  icon: Icon(
-                                    Icons.favorite_border,
-                                    color: Colors.black38,
-                                  ),
+                                  icon: love
+                                      ? Icon(
+                                          Icons.favorite,
+                                          color: Colors.red,
+                                        )
+                                      : Icon(
+                                          Icons.favorite_border,
+                                          color: Colors.black38,
+                                        ),
                                   iconSize: 30,
                                   onPressed: () {
-                                    print('object');
+                                    setState(() {
+                                      love = !love;
+                                    });
                                   }),
                               Text("2120 "),
                               SizedBox(
@@ -86,7 +105,7 @@ class _PostsState extends State<Posts> {
                               IconButton(
                                   icon: Icon(
                                     Icons.chat,
-                                    color: Colors.black38,
+                                    color: Colors.blue,
                                   ),
                                   iconSize: 30,
                                   onPressed: () {
@@ -102,13 +121,20 @@ class _PostsState extends State<Posts> {
                           Row(
                             children: <Widget>[
                               IconButton(
-                                  icon: Icon(
-                                    Icons.bookmark_border,
-                                    color: Colors.black38,
-                                  ),
+                                  icon: book
+                                      ? Icon(
+                                          Icons.bookmark,
+                                          color: Colors.blue,
+                                        )
+                                      : Icon(
+                                          Icons.bookmark_border,
+                                          color: Colors.black38,
+                                        ),
                                   iconSize: 30,
                                   onPressed: () {
-                                    print('object');
+                                    setState(() {
+                                      book = !book;
+                                    });
                                   }),
                             ],
                           ),
@@ -132,9 +158,7 @@ class _PostsState extends State<Posts> {
           return Container(
             margin: EdgeInsets.all(20),
             height: 200,
-            decoration: BoxDecoration(
-              // borderRadius: BorderRadius.circular(20)
-            ),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
