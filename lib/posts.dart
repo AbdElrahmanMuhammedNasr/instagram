@@ -5,7 +5,8 @@ import 'package:instegram/Profile.dart';
 class Posts extends StatefulWidget {
   String user;
   String post;
-  Posts({this.user, this.post});
+  String name;
+  Posts({this.user, this.post,this.name});
 
   @override
   _PostsState createState() => _PostsState();
@@ -38,11 +39,18 @@ class _PostsState extends State<Posts> {
                 child: Column(
                   children: <Widget>[
                     ListTile(
-                      leading: CircleAvatar(
-                        radius: 30,
-                        backgroundImage: AssetImage('images/${widget.user}'),
+                      leading: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => Profile(userImage:'images/${widget.user}' ,),
+                          ));
+                        },
+                        child: CircleAvatar(
+                          radius: 30,
+                          backgroundImage: AssetImage('images/${widget.user}'),
+                        ),
                       ),
-                      title: Text('Abdo Nasr'),
+                      title: Text(widget.name),
                       subtitle: Text("5 min"),
                       trailing: IconButton(
                           icon: Icon(Icons.more_vert),
@@ -56,7 +64,6 @@ class _PostsState extends State<Posts> {
                     GestureDetector(
                       onDoubleTap: () {
                         setState(() {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => Profile(),));
                           love = !love;
                         });
                       },

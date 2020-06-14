@@ -12,6 +12,8 @@ class Postdetails extends StatefulWidget {
 }
 
 class _PostdetailsState extends State<Postdetails> {
+  bool userLike = false;
+
   @override
   void initState() {
     super.initState();
@@ -185,11 +187,7 @@ Widget _comment({String user, String image, String comment, String comt}) {
       title: Text('${user}'),
       subtitle: Text("${comt}"),
       trailing: IconButton(
-          icon: Icon(Icons.favorite_border),
-          iconSize: 17,
-          onPressed: () {
-            print('more');
-          }),
+          icon: Icon(Icons.favorite_border), iconSize: 17, onPressed: () {}),
     ),
   );
 }

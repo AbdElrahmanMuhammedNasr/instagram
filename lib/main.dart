@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:instegram/PostDetails.dart';
 import 'package:instegram/common/AppBarForm.dart';
 import 'package:instegram/common/BottomBarform.dart';
@@ -10,9 +11,22 @@ void main() => runApp(MyApp());
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
+
+  void getmessage() async {
+    // Stirng x = await
+  }
 }
 
 class _MyAppState extends State<MyApp> {
+  List<Map<String, String>> userPost = [
+    {'user': 'm.jpg', 'post': '1.jpg','name':'AbdElraham'},
+    {'user': 'a.jpg', 'post': 'a.jpg','name':'Mostafa'},
+    {'user': 'm.jpg', 'post': '2.jpg','name':'AbdElraham'},
+    {'user': 'a.jpg', 'post': '8.jpg','name':'AbdElraham'},
+    {'user': 'm.jpg', 'post': '2.jpg','name':'Mostafa'},
+    {'user': 'a.jpg', 'post': '8.jpg','name':'Mostafa'},
+  ];
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
@@ -36,16 +50,20 @@ class _MyAppState extends State<MyApp> {
                         child: CircleAvatar(
                           radius: 30,
                           backgroundImage: AssetImage('images/${pos + 1}.jpg'),
-
                         ),
                       );
                     }),
               ),
-              new Posts(user: 'm.jpg', post: '2.jpg'),
-              new Posts(user: 'a.jpg', post: '2.jpg'),
-              new Posts(user: 'a.jpg', post: '8.jpg'),
-              new Posts(user: 'a.jpg', post: 'a.jpg'),
-              new Posts(user: 'm.jpg', post: '1.jpg'),
+
+              Column(
+                  children: userPost
+                      .map((e) => new Posts(
+                            user: e['user'],
+                            post: e['post'],
+                            name: e['name'],
+                          ))
+                      .toList()),
+
             ],
           ),
         ),

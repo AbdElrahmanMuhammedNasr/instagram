@@ -2,16 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:instegram/common/AppBarForm.dart';
 
 class Profile extends StatefulWidget {
+
+  String userImage;
+  Profile({this.userImage});
+
   @override
   _ProfileState createState() => _ProfileState();
 }
 
 class _ProfileState extends State<Profile> {
+
+  @override
+  void initState() {
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBarF(),
+        appBar: AppBarF(
+          profileUser: 'Adbelrahman Nasr',
+        ),
         body: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.all(20.0),
@@ -34,14 +45,16 @@ class _ProfileState extends State<Profile> {
                                   children: <Widget>[
                                     Text(
                                       'Following',
-                                      style: TextStyle(fontSize: 20),
+                                      style: TextStyle(
+                                          fontSize: 20, fontFamily: 'Raleway'),
                                     ),
                                     SizedBox(
                                       height: 5,
                                     ),
                                     Text(
                                       '1200',
-                                      style: TextStyle(fontSize: 16),
+                                      style: TextStyle(
+                                          fontSize: 16, fontFamily: 'Raleway'),
                                     ),
                                   ],
                                 ),
@@ -49,14 +62,16 @@ class _ProfileState extends State<Profile> {
                                   children: <Widget>[
                                     Text(
                                       'follower',
-                                      style: TextStyle(fontSize: 20),
+                                      style: TextStyle(
+                                          fontSize: 20, fontFamily: 'Raleway'),
                                     ),
                                     SizedBox(
                                       height: 5,
                                     ),
                                     Text(
                                       '120',
-                                      style: TextStyle(fontSize: 16),
+                                      style: TextStyle(
+                                          fontSize: 16, fontFamily: 'Raleway'),
                                     ),
                                   ],
                                 ),
@@ -64,14 +79,16 @@ class _ProfileState extends State<Profile> {
                                   children: <Widget>[
                                     Text(
                                       'Posts',
-                                      style: TextStyle(fontSize: 20),
+                                      style: TextStyle(
+                                          fontSize: 20, fontFamily: 'Raleway'),
                                     ),
                                     SizedBox(
                                       height: 5,
                                     ),
                                     Text(
                                       '1200',
-                                      style: TextStyle(fontSize: 16),
+                                      style: TextStyle(
+                                          fontSize: 16, fontFamily: 'Raleway'),
                                     ),
                                   ],
                                 ),
@@ -94,14 +111,18 @@ class _ProfileState extends State<Profile> {
                       Container(
                         child: CircleAvatar(
                           radius: 60,
-                          backgroundImage: AssetImage('images/2.jpg'),
+                          backgroundImage: AssetImage(widget.userImage),
                         ),
                       )
                     ],
                   ),
                 ),
                 SizedBox(
-                  height: 50,
+                  height: 20,
+                ),
+               
+                 SizedBox(
+                  height: 20,
                 ),
                 Container(
                   child: Column(
