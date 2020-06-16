@@ -6,7 +6,8 @@ class Posts extends StatefulWidget {
   String user;
   String post;
   String name;
-  Posts({this.user, this.post,this.name});
+  int likes;
+  Posts({this.user, this.post, this.name, this.likes});
 
   @override
   _PostsState createState() => _PostsState();
@@ -42,7 +43,9 @@ class _PostsState extends State<Posts> {
                       leading: GestureDetector(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => Profile(userImage:'images/${widget.user}' ,),
+                            builder: (context) => Profile(
+                              userImage: 'images/${widget.user}',
+                            ),
                           ));
                         },
                         child: CircleAvatar(
@@ -64,6 +67,11 @@ class _PostsState extends State<Posts> {
                     GestureDetector(
                       onDoubleTap: () {
                         setState(() {
+                          if (love == true) {
+                            widget.likes -= 1;
+                          } else {
+                            widget.likes += 1;
+                          }
                           love = !love;
                         });
                       },
@@ -99,22 +107,27 @@ class _PostsState extends State<Posts> {
                                           Icons.favorite_border,
                                           color: Colors.black38,
                                         ),
-                                  iconSize: 30,
+                                  iconSize: 20,
                                   onPressed: () {
                                     setState(() {
+                                      if (love == true) {
+                                        widget.likes -= 1;
+                                      } else {
+                                        widget.likes += 1;
+                                      }
                                       love = !love;
                                     });
                                   }),
-                              Text("2120 "),
+                              Text('${widget.likes}'),
                               SizedBox(
-                                width: 5,
+                                width: 0,
                               ),
                               IconButton(
                                   icon: Icon(
                                     Icons.chat,
                                     color: Colors.blue,
                                   ),
-                                  iconSize: 30,
+                                  iconSize: 20,
                                   onPressed: () {
                                     Navigator.of(context)
                                         .push(MaterialPageRoute(
@@ -123,6 +136,19 @@ class _PostsState extends State<Posts> {
                                                   post: widget.post,
                                                 )));
                                   }),
+                              SizedBox(
+                                width: 0,
+                              ),
+                              Transform.rotate(
+                                angle: 0,
+                                child: IconButton(
+                                    icon: Icon(
+                                      Icons.send,
+                                      color: Colors.green,
+                                    ),
+                                    iconSize: 20,
+                                    onPressed: () {}),
+                              ),
                             ],
                           ),
                           Row(
@@ -137,7 +163,7 @@ class _PostsState extends State<Posts> {
                                           Icons.bookmark_border,
                                           color: Colors.black38,
                                         ),
-                                  iconSize: 30,
+                                  iconSize: 20,
                                   onPressed: () {
                                     setState(() {
                                       book = !book;

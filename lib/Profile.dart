@@ -131,40 +131,17 @@ class _ProfileState extends State<Profile> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Image.asset(
-                            'images/2.jpg',
+                            'images/7.jpg',
                             fit: BoxFit.fill,
                             width: 120,
                           ),
                           Image.asset(
-                            'images/2.jpg',
+                            'images/7.jpg',
                             fit: BoxFit.fill,
                             width: 120,
                           ),
                           Image.asset(
-                            'images/2.jpg',
-                            fit: BoxFit.fill,
-                            width: 120,
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Image.asset(
-                            'images/2.jpg',
-                            fit: BoxFit.fill,
-                            width: 120,
-                          ),
-                          Image.asset(
-                            'images/2.jpg',
-                            fit: BoxFit.fill,
-                            width: 120,
-                          ),
-                          Image.asset(
-                            'images/2.jpg',
+                            'images/7.jpg',
                             fit: BoxFit.fill,
                             width: 120,
                           ),
@@ -177,17 +154,17 @@ class _ProfileState extends State<Profile> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Image.asset(
-                            'images/2.jpg',
+                            'images/7.jpg',
                             fit: BoxFit.fill,
                             width: 120,
                           ),
                           Image.asset(
-                            'images/2.jpg',
+                            'images/7.jpg',
                             fit: BoxFit.fill,
                             width: 120,
                           ),
                           Image.asset(
-                            'images/2.jpg',
+                            'images/7.jpg',
                             fit: BoxFit.fill,
                             width: 120,
                           ),
@@ -200,17 +177,40 @@ class _ProfileState extends State<Profile> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Image.asset(
-                            'images/2.jpg',
+                            'images/7.jpg',
                             fit: BoxFit.fill,
                             width: 120,
                           ),
                           Image.asset(
-                            'images/2.jpg',
+                            'images/7.jpg',
                             fit: BoxFit.fill,
                             width: 120,
                           ),
                           Image.asset(
-                            'images/2.jpg',
+                            'images/7.jpg',
+                            fit: BoxFit.fill,
+                            width: 120,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Image.asset(
+                            'images/7.jpg',
+                            fit: BoxFit.fill,
+                            width: 120,
+                          ),
+                          Image.asset(
+                            'images/7.jpg',
+                            fit: BoxFit.fill,
+                            width: 120,
+                          ),
+                          Image.asset(
+                            'images/7.jpg',
                             fit: BoxFit.fill,
                             width: 120,
                           ),

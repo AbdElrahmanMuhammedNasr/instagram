@@ -18,13 +18,13 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List<Map<String, String>> userPost = [
-    {'user': 'm.jpg', 'post': '1.jpg','name':'AbdElraham'},
-    {'user': 'a.jpg', 'post': 'a.jpg','name':'Mostafa'},
-    {'user': 'm.jpg', 'post': '2.jpg','name':'AbdElraham'},
-    {'user': 'a.jpg', 'post': '8.jpg','name':'AbdElraham'},
-    {'user': 'm.jpg', 'post': '2.jpg','name':'Mostafa'},
-    {'user': 'a.jpg', 'post': '8.jpg','name':'Mostafa'},
+  List<Map<String, dynamic>> userPost = [
+    {'user': 'm.jpg', 'post': '1.jpg','name':'AbdElraham','likes':1},
+    {'user': 'a.jpg', 'post': 'a.jpg','name':'Mostafa','likes':1},
+    {'user': 'm.jpg', 'post': '7.jpg','name':'AbdElraham','likes':1},
+    {'user': 'a.jpg', 'post': '8.jpg','name':'AbdElraham','likes':1},
+    {'user': 'm.jpg', 'post': '7.jpg','name':'Mostafa','likes':1},
+    {'user': 'a.jpg', 'post': '8.jpg','name':'Mostafa','likes':1},
   ];
 
   @override
@@ -61,6 +61,7 @@ class _MyAppState extends State<MyApp> {
                             user: e['user'],
                             post: e['post'],
                             name: e['name'],
+                            likes:e['likes']
                           ))
                       .toList()),
 
