@@ -19,7 +19,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   List<Map<String, dynamic>> userPost = [
-    {'user': 'm.jpg', 'post': '1.jpg','name':'AbdElraham','likes':1},
+    {'user': 'm.jpg', 'post': '1.jpg','name':'AbdElraham','likes':10000},
     {'user': 'a.jpg', 'post': 'a.jpg','name':'Mostafa','likes':1},
     {'user': 'm.jpg', 'post': '7.jpg','name':'AbdElraham','likes':1},
     {'user': 'a.jpg', 'post': '8.jpg','name':'AbdElraham','likes':1},
@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
                 height: 80,
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 4,
+                    itemCount: 8,
                     itemBuilder: (BuildContext context, int pos) {
                       return Padding(
                         padding: EdgeInsets.all(10),

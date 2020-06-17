@@ -44,7 +44,7 @@ class _PostsState extends State<Posts> {
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => Profile(
-                              userImage: 'images/${widget.user}',
+                              userImage: '${widget.user}',
                             ),
                           ));
                         },

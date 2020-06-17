@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:instegram/PostDetails.dart';
 import 'package:instegram/common/AppBarForm.dart';
 
 class Profile extends StatefulWidget {
-
   String userImage;
   Profile({this.userImage});
 
@@ -11,11 +11,20 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-
+  List<String> images = [
+    '1.jpg',
+    '8.jpg',
+    '3.jpg',
+    '4.jpg',
+    '7.jpg',
+    '8.jpg',
+    '4.jpg'
+  ];
   @override
   void initState() {
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -97,21 +106,40 @@ class _ProfileState extends State<Profile> {
                             SizedBox(
                               height: 20,
                             ),
-                            FlatButton(
-                              onPressed: () {
-                                print('follow');
-                              },
-                              child: Text('Follow'),
-                              color: Colors.blue,
-                              colorBrightness: Brightness.dark,
-                            )
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                FlatButton(
+                                  shape: new RoundedRectangleBorder(
+                                      borderRadius:
+                                          new BorderRadius.circular(5)),
+                                  onPressed: () {
+                                    print('send ');
+                                  },
+                                  child: Text('send'),
+                                  color: Colors.blue,
+                                  colorBrightness: Brightness.dark,
+                                ),
+                                FlatButton(
+                                  shape: new RoundedRectangleBorder(
+                                      borderRadius:
+                                          new BorderRadius.circular(5)),
+                                  onPressed: () {
+                                    print('follow');
+                                  },
+                                  child: Text('Follow'),
+                                  color: Colors.blue,
+                                  colorBrightness: Brightness.dark,
+                                )
+                              ],
+                            ),
                           ],
                         ),
                       ),
                       Container(
                         child: CircleAvatar(
                           radius: 60,
-                          backgroundImage: AssetImage(widget.userImage),
+                          backgroundImage: AssetImage('images/${widget.userImage}'),
                         ),
                       )
                     ],
@@ -120,101 +148,23 @@ class _ProfileState extends State<Profile> {
                 SizedBox(
                   height: 20,
                 ),
-               
-                 SizedBox(
+                SizedBox(
                   height: 20,
                 ),
                 Container(
                   child: Column(
                     children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Image.asset(
-                            'images/7.jpg',
-                            fit: BoxFit.fill,
-                            width: 120,
-                          ),
-                          Image.asset(
-                            'images/7.jpg',
-                            fit: BoxFit.fill,
-                            width: 120,
-                          ),
-                          Image.asset(
-                            'images/7.jpg',
-                            fit: BoxFit.fill,
-                            width: 120,
-                          ),
-                        ],
-                      ),
+                      _profilePost(widget.userImage,context,'1.jpg', '4.jpg', '3.jpg'),
                       SizedBox(
-                        height: 10,
+                        height: 5,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Image.asset(
-                            'images/7.jpg',
-                            fit: BoxFit.fill,
-                            width: 120,
-                          ),
-                          Image.asset(
-                            'images/7.jpg',
-                            fit: BoxFit.fill,
-                            width: 120,
-                          ),
-                          Image.asset(
-                            'images/7.jpg',
-                            fit: BoxFit.fill,
-                            width: 120,
-                          ),
-                        ],
-                      ),
+                      _profilePost(widget.userImage,context,'4.jpg', '4.jpg', '3.jpg'),
                       SizedBox(
-                        height: 10,
+                        height: 5,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Image.asset(
-                            'images/7.jpg',
-                            fit: BoxFit.fill,
-                            width: 120,
-                          ),
-                          Image.asset(
-                            'images/7.jpg',
-                            fit: BoxFit.fill,
-                            width: 120,
-                          ),
-                          Image.asset(
-                            'images/7.jpg',
-                            fit: BoxFit.fill,
-                            width: 120,
-                          ),
-                        ],
-                      ),
+                      _profilePost(widget.userImage,context,'8.jpg', '1.jpg', '3.jpg'),
                       SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Image.asset(
-                            'images/7.jpg',
-                            fit: BoxFit.fill,
-                            width: 120,
-                          ),
-                          Image.asset(
-                            'images/7.jpg',
-                            fit: BoxFit.fill,
-                            width: 120,
-                          ),
-                          Image.asset(
-                            'images/7.jpg',
-                            fit: BoxFit.fill,
-                            width: 120,
-                          ),
-                        ],
+                        height: 5,
                       ),
                     ],
                   ),
@@ -226,4 +176,44 @@ class _ProfileState extends State<Profile> {
       ),
     );
   }
+}
+
+Widget _profilePost(userImage,context,image, image1, image2) {
+  return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        GestureDetector(
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Postdetails(user:userImage , post: image,),));
+          },
+          child: Image.asset(
+            'images/${image}',
+            fit: BoxFit.fill,
+            width: 120,
+            height: 120,
+          ),
+        ),
+        GestureDetector(
+            onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Postdetails(user:userImage ,post: image1,),));
+          },
+          child: Image.asset(
+            'images/${image1}',
+            fit: BoxFit.fill,
+            width: 120,
+            height: 120,
+          ),
+        ),
+        GestureDetector(
+            onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Postdetails(user:userImage ,post:image2),));
+          },
+          child: Image.asset(
+            'images/${image2}',
+            fit: BoxFit.fill,
+            width: 120,
+            height: 120,
+          ),
+        )
+      ]);
 }

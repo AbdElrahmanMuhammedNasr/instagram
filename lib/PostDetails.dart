@@ -5,6 +5,8 @@ import 'package:instegram/common/BottomBarform.dart';
 class Postdetails extends StatefulWidget {
   String user;
   String post;
+  double mainImageHeaight = 400;
+
   Postdetails({this.user, this.post});
 
   @override
@@ -62,21 +64,58 @@ class _PostdetailsState extends State<Postdetails> {
                                         print('more');
                                       }),
                                 ),
-                                Container(
-                                  margin: EdgeInsets.all(5),
-                                  width: double.infinity,
-                                  height: 400,
-                                  decoration: BoxDecoration(
-                                    color: Colors.black12,
-                                    borderRadius: BorderRadius.circular(20),
-                                    image: DecorationImage(
-                                        image:
-                                            AssetImage('images/${widget.post}'),
-                                        fit: BoxFit.fill),
+                                Stack(children: [
+                                  Container(
+                                    margin: EdgeInsets.all(5),
+                                    width: double.infinity,
+                                    height: widget.mainImageHeaight,
+                                    decoration: BoxDecoration(
+                                      color: Colors.black12,
+                                      borderRadius: BorderRadius.circular(10),
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              'images/${widget.post}'),
+                                          fit: BoxFit.fill),
+                                    ),
                                   ),
-                                ),
+                                  // Positioned(
+                                  // top: widget.mainImageHeaight-20,
+                                  // left: 15,
+                                  // child: Row(children: <Widget>[
+                                  //   Icon(Icons.favorite_border,color: Colors.red, size: 20,),
+                                  //   Text('200'),
+                                  // ],), ),
+                                ]),
                                 SizedBox(
                                   height: 20,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: <Widget>[
+                                    Row(
+                                      children: <Widget>[
+                                        Icon(
+                                          Icons.favorite_border,
+                                          // color: Colors.red,
+                                          size: 20,
+                                        ),
+                                        SizedBox(width: 7,),
+                                        Text('200 likes'),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: <Widget>[
+                                        Icon(
+                                          Icons.chat,
+                                          // color: Colors.red,
+                                          size: 20,
+                                        ),
+                                        SizedBox(width: 7,),
+                                        Text('200 comments'),
+                                      ],
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
