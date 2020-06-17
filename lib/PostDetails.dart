@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instegram/comment.dart';
 import 'package:instegram/common/AppBarForm.dart';
 import 'package:instegram/common/BottomBarform.dart';
 
@@ -14,7 +15,15 @@ class Postdetails extends StatefulWidget {
 }
 
 class _PostdetailsState extends State<Postdetails> {
-  bool userLike = false;
+  final comment = new TextEditingController();
+
+  List<Map<String, String>> comments = [
+    {'user': 'Tamer', 'image': '1.jpg', 'comt': 'this is great pic'},
+    {'user': 'Ali', 'image': 'm.jpg', 'comt': 'this is great pic'},
+    {'user': 'Hassan', 'image': 'a.jpg', 'comt': 'this is great pic'},
+    // {'user': 'Abdo', 'image': 'a.jpg', 'comt': 'this is great pic'},
+    // {'user': 'said', 'image': 'm.jpg', 'comt': 'this is great pic'}
+  ];
 
   @override
   void initState() {
@@ -100,7 +109,9 @@ class _PostdetailsState extends State<Postdetails> {
                                           // color: Colors.red,
                                           size: 20,
                                         ),
-                                        SizedBox(width: 7,),
+                                        SizedBox(
+                                          width: 7,
+                                        ),
                                         Text('200 likes'),
                                       ],
                                     ),
@@ -111,7 +122,9 @@ class _PostdetailsState extends State<Postdetails> {
                                           // color: Colors.red,
                                           size: 20,
                                         ),
-                                        SizedBox(width: 7,),
+                                        SizedBox(
+                                          width: 7,
+                                        ),
                                         Text('200 comments'),
                                       ],
                                     ),
@@ -129,7 +142,7 @@ class _PostdetailsState extends State<Postdetails> {
                   ),
                   Container(
                     width: double.infinity,
-                    height: 400,
+                    height: comments.length == 0 ? 0 : 400,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20.0)),
@@ -138,32 +151,14 @@ class _PostdetailsState extends State<Postdetails> {
                           EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                       child: SingleChildScrollView(
                         child: Column(
-                          children: <Widget>[
-                            _comment(
-                                user: 'Tamer',
-                                image: '2.jpg',
-                                comt: 'beautiful'),
-                            _comment(
-                                user: 'Ali',
-                                image: '4.jpg',
-                                comt: 'Your ara awsome'),
-                            _comment(
-                                user: 'Hassan',
-                                image: 'a.jpg',
-                                comt: 'beautiful'),
-                            _comment(
-                                user: 'Said',
-                                image: '8.jpg',
-                                comt: 'Dm Please'),
-                            _comment(
-                                user: 'Said',
-                                image: '8.jpg',
-                                comt: 'Dm Please'),
-                            _comment(
-                                user: 'Said',
-                                image: '8.jpg',
-                                comt: 'Dm Please'),
-                          ],
+                          children: comments
+                              .map(
+                                (e) => new Comment(
+                                    image: e['image'],
+                                    user: e['user'],
+                                    comt: e['comt']),
+                              )
+                              .toList(),
                         ),
                       ),
                     ),
@@ -180,6 +175,7 @@ class _PostdetailsState extends State<Postdetails> {
                       padding:
                           EdgeInsets.symmetric(vertical: 20, horizontal: 5),
                       child: TextField(
+                        controller: comment,
                         decoration: InputDecoration(
                           prefixIcon: Padding(
                             padding: EdgeInsets.only(right: 20),
@@ -192,7 +188,14 @@ class _PostdetailsState extends State<Postdetails> {
                           suffixIcon: IconButton(
                             icon: Icon(Icons.send),
                             onPressed: () {
-                              print("object");
+                              setState(() {
+                                comments.add({
+                                  'user': 'tamer',
+                                  'image': widget.user,
+                                  'comt': comment.text
+                                });
+                                comment.text = '';
+                              });
                             },
                           ),
                           hintText: 'add a comment',
@@ -215,18 +218,4 @@ class _PostdetailsState extends State<Postdetails> {
   }
 }
 
-Widget _comment({String user, String image, String comment, String comt}) {
-  return Padding(
-    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-    child: ListTile(
-      leading: CircleAvatar(
-        radius: 30,
-        backgroundImage: AssetImage('images/${image}'),
-      ),
-      title: Text('${user}'),
-      subtitle: Text("${comt}"),
-      trailing: IconButton(
-          icon: Icon(Icons.favorite_border), iconSize: 17, onPressed: () {}),
-    ),
-  );
-}
+

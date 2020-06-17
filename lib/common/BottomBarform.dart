@@ -29,6 +29,9 @@ class BottomBarF extends StatelessWidget {
               icon: Icon(Icons.person_outline), title: Text('Profile')),
         ],
         type: BottomNavigationBarType.fixed,
+        onTap: (int x){
+          print('object $x');
+        },
       ),
     );
   }
