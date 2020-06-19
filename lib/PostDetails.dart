@@ -6,9 +6,11 @@ import 'package:instegram/common/BottomBarform.dart';
 class Postdetails extends StatefulWidget {
   String user;
   String post;
+  int like;
+  String posted;
   double mainImageHeaight = 400;
 
-  Postdetails({this.user, this.post});
+  Postdetails({this.user, this.post, this.like,this.posted});
 
   @override
   _PostdetailsState createState() => _PostdetailsState();
@@ -66,7 +68,7 @@ class _PostdetailsState extends State<Postdetails> {
                                         AssetImage('images/${widget.user}'),
                                   ),
                                   title: Text('Abdo Nasr'),
-                                  subtitle: Text("5 min"),
+                                  subtitle: Text("${widget.posted.substring(0,16)}"),
                                   trailing: IconButton(
                                       icon: Icon(Icons.more_horiz),
                                       onPressed: () {
@@ -112,7 +114,7 @@ class _PostdetailsState extends State<Postdetails> {
                                         SizedBox(
                                           width: 7,
                                         ),
-                                        Text('200 likes'),
+                                        Text('${widget.like} likes'),
                                       ],
                                     ),
                                     Row(
@@ -142,13 +144,12 @@ class _PostdetailsState extends State<Postdetails> {
                   ),
                   Container(
                     width: double.infinity,
-                    height: comments.length == 0 ? 0 : 400,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20.0)),
                     child: Padding(
                       padding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                          EdgeInsets.symmetric(vertical: 1, horizontal: 1),
                       child: SingleChildScrollView(
                         child: Column(
                           children: comments

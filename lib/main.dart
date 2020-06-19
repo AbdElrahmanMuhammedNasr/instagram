@@ -19,12 +19,12 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   List<Map<String, dynamic>> userPost = [
-    {'user': 'm.jpg', 'post': '1.jpg','name':'AbdElraham','likes':10000},
-    {'user': 'a.jpg', 'post': 'a.jpg','name':'Mostafa','likes':1},
-    {'user': 'm.jpg', 'post': '7.jpg','name':'AbdElraham','likes':1},
-    {'user': 'a.jpg', 'post': '8.jpg','name':'AbdElraham','likes':1},
-    {'user': 'm.jpg', 'post': '7.jpg','name':'Mostafa','likes':1},
-    {'user': 'a.jpg', 'post': '8.jpg','name':'Mostafa','likes':1},
+    {'user': 'm.jpg', 'post': '1.jpg','name':'AbdElraham','likes':10000,'posted':new DateTime.now()},
+    {'user': 'a.jpg', 'post': 'a.jpg','name':'Mostafa','likes':1,'posted':new DateTime.now()},
+    {'user': 'm.jpg', 'post': '7.jpg','name':'AbdElraham','likes':1,'posted':new DateTime.now()},
+    {'user': 'a.jpg', 'post': '8.jpg','name':'AbdElraham','likes':1,'posted':new DateTime.now()},
+    {'user': 'm.jpg', 'post': '7.jpg','name':'Mostafa','likes':1,'posted':new DateTime.now()},
+    {'user': 'a.jpg', 'post': '8.jpg','name':'Mostafa','likes':1,'posted':new DateTime.now()},
   ];
 
   @override
@@ -61,7 +61,8 @@ class _MyAppState extends State<MyApp> {
                             user: e['user'],
                             post: e['post'],
                             name: e['name'],
-                            likes:e['likes']
+                            likes:e['likes'],
+                            posted:e['posted'].toString()
                           ))
                       .toList()),
 

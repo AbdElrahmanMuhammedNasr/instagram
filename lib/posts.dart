@@ -6,8 +6,9 @@ class Posts extends StatefulWidget {
   String user;
   String post;
   String name;
+  String posted;
   int likes;
-  Posts({this.user, this.post, this.name, this.likes});
+  Posts({this.user, this.post, this.name, this.likes, this.posted});
 
   @override
   _PostsState createState() => _PostsState();
@@ -54,10 +55,12 @@ class _PostsState extends State<Posts> {
                         ),
                       ),
                       title: Text(widget.name),
-                      subtitle: Text("5 min"),
+                      // subtitle: Text("${widget.posted.split('.')[0]}"),
+                      subtitle: Text("${widget.posted.substring(0,16)}"),
                       trailing: IconButton(
                           icon: Icon(Icons.more_vert),
                           onPressed: () {
+                            // Duration(microseconds: 200);
                             _showOptions();
                           }),
                     ),
@@ -134,6 +137,8 @@ class _PostsState extends State<Posts> {
                                             builder: (context) => Postdetails(
                                                   user: widget.user,
                                                   post: widget.post,
+                                                  like: widget.likes,
+                                                  posted: widget.posted,
                                                 )));
                                   }),
                               SizedBox(

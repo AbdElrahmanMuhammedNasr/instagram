@@ -139,7 +139,8 @@ class _ProfileState extends State<Profile> {
                       Container(
                         child: CircleAvatar(
                           radius: 60,
-                          backgroundImage: AssetImage('images/${widget.userImage}'),
+                          backgroundImage:
+                              AssetImage('images/${widget.userImage}'),
                         ),
                       )
                     ],
@@ -154,15 +155,18 @@ class _ProfileState extends State<Profile> {
                 Container(
                   child: Column(
                     children: <Widget>[
-                      _profilePost(widget.userImage,context,'1.jpg', '4.jpg', '3.jpg'),
+                      _profilePost(
+                          widget.userImage, context, '1.jpg', '4.jpg', '3.jpg'),
                       SizedBox(
                         height: 5,
                       ),
-                      _profilePost(widget.userImage,context,'4.jpg', '4.jpg', '3.jpg'),
+                      _profilePost(
+                          widget.userImage, context, '4.jpg', '4.jpg', '3.jpg'),
                       SizedBox(
                         height: 5,
                       ),
-                      _profilePost(widget.userImage,context,'8.jpg', '1.jpg', '3.jpg'),
+                      _profilePost(
+                          widget.userImage, context, '8.jpg', '1.jpg', '3.jpg'),
                       SizedBox(
                         height: 5,
                       ),
@@ -178,13 +182,20 @@ class _ProfileState extends State<Profile> {
   }
 }
 
-Widget _profilePost(userImage,context,image, image1, image2) {
+Widget _profilePost(userImage, context, image, image1, image2) {
   return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         GestureDetector(
           onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Postdetails(user:userImage , post: image,),));
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => Postdetails(
+                user: userImage,
+                post: image,
+                like: 20,
+                posted: new DateTime.now().toString(),
+              ),
+            ));
           },
           child: Image.asset(
             'images/${image}',
@@ -194,8 +205,15 @@ Widget _profilePost(userImage,context,image, image1, image2) {
           ),
         ),
         GestureDetector(
-            onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Postdetails(user:userImage ,post: image1,),));
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => Postdetails(
+                user: userImage,
+                post: image1,
+                like: 20,
+                posted: new DateTime.now().toString(),
+              ),
+            ));
           },
           child: Image.asset(
             'images/${image1}',
@@ -205,8 +223,15 @@ Widget _profilePost(userImage,context,image, image1, image2) {
           ),
         ),
         GestureDetector(
-            onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Postdetails(user:userImage ,post:image2),));
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => Postdetails(
+                user: userImage,
+                post: image2,
+                like: 20,
+                posted: new DateTime.now().toString(),
+              ),
+            ));
           },
           child: Image.asset(
             'images/${image2}',
