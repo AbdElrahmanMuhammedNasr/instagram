@@ -8,7 +8,8 @@ class Posts extends StatefulWidget {
   String name;
   String posted;
   int likes;
-  Posts({this.user, this.post, this.name, this.likes, this.posted});
+  String job;
+  Posts({this.user, this.post, this.name, this.likes, this.posted, this.job});
 
   @override
   _PostsState createState() => _PostsState();
@@ -45,7 +46,8 @@ class _PostsState extends State<Posts> {
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => Profile(
-                              userImage: '${widget.user}',
+                              userImage: '${widget.user} ',
+                              userName: widget.name,
                             ),
                           ));
                         },
@@ -54,9 +56,8 @@ class _PostsState extends State<Posts> {
                           backgroundImage: AssetImage('images/${widget.user}'),
                         ),
                       ),
-                      title: Text(widget.name),
-                      // subtitle: Text("${widget.posted.split('.')[0]}"),
-                      subtitle: Text("${widget.posted.substring(0,16)}"),
+                      title: Text('${widget.name} - ( ${widget.job} )'),
+                      subtitle: Text("${widget.posted.substring(0, 16)}"),
                       trailing: IconButton(
                           icon: Icon(Icons.more_vert),
                           onPressed: () {
@@ -70,7 +71,7 @@ class _PostsState extends State<Posts> {
                     GestureDetector(
                       onDoubleTap: () {
                         setState(() {
-                          if (love == true) {
+                          if (love) {
                             widget.likes -= 1;
                           } else {
                             widget.likes += 1;
@@ -113,7 +114,7 @@ class _PostsState extends State<Posts> {
                                   iconSize: 20,
                                   onPressed: () {
                                     setState(() {
-                                      if (love == true) {
+                                      if (love) {
                                         widget.likes -= 1;
                                       } else {
                                         widget.likes += 1;
@@ -132,28 +133,31 @@ class _PostsState extends State<Posts> {
                                   ),
                                   iconSize: 20,
                                   onPressed: () {
-                                    Navigator.of(context)
-                                        .push(MaterialPageRoute(
-                                            builder: (context) => Postdetails(
-                                                  user: widget.user,
-                                                  post: widget.post,
-                                                  like: widget.likes,
-                                                  posted: widget.posted,
-                                                )));
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) => Postdetails(
+                                          user: widget.user,
+                                          name: widget.name,
+                                          post: widget.post,
+                                          like: widget.likes,
+                                          posted: widget.posted,
+                                        ),
+                                      ),
+                                    );
                                   }),
                               SizedBox(
                                 width: 0,
                               ),
-                              Transform.rotate(
-                                angle: 0,
-                                child: IconButton(
-                                    icon: Icon(
-                                      Icons.send,
-                                      color: Colors.green,
-                                    ),
-                                    iconSize: 20,
-                                    onPressed: () {}),
-                              ),
+                              // Transform.rotate(
+                              //   angle: 0,
+                              //   child: IconButton(
+                              //       icon: Icon(
+                              //         Icons.send,
+                              //         color: Colors.green,
+                              //       ),
+                              //       iconSize: 20,
+                              //       onPressed: () {}),
+                              // ),
                             ],
                           ),
                           Row(

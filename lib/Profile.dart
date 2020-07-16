@@ -4,7 +4,8 @@ import 'package:instegram/common/AppBarForm.dart';
 
 class Profile extends StatefulWidget {
   String userImage;
-  Profile({this.userImage});
+  String userName;
+  Profile({this.userImage, this.userName});
 
   @override
   _ProfileState createState() => _ProfileState();
@@ -30,7 +31,7 @@ class _ProfileState extends State<Profile> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBarF(
-          profileUser: 'Adbelrahman Nasr',
+          profileUser: widget.userName,
         ),
         body: SingleChildScrollView(
           child: Container(

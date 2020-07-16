@@ -1,9 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:instegram/Home.dart';
+import 'package:instegram/Profile.dart';
 
 class BottomBarF extends StatelessWidget {
+  
+
   @override
   Widget build(BuildContext context) {
+
+    _goToPage(number) {
+    switch (number) {
+      case 0:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => MyApp()));
+        break;
+      case 1:
+        print(1);
+        break;
+      case 2:
+        print(2);
+        break;
+      case 3:
+        print(3);
+        break;
+      case 4:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => Profile(
+            userImage: 'a.jpg',
+            userName: 'Abdo',
+          ),
+        ));
+        break;
+    }
+  }
     return Container(
+      height: 80,
       child: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
@@ -29,8 +60,8 @@ class BottomBarF extends StatelessWidget {
               icon: Icon(Icons.person_outline), title: Text('Profile')),
         ],
         type: BottomNavigationBarType.fixed,
-        onTap: (int x){
-          print('object $x');
+        onTap: (int x) {
+          _goToPage(x);
         },
       ),
     );

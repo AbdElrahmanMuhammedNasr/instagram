@@ -5,12 +5,13 @@ import 'package:instegram/common/BottomBarform.dart';
 
 class Postdetails extends StatefulWidget {
   String user;
+  String name;
   String post;
   int like;
   String posted;
-  double mainImageHeaight = 400;
+  double mainImageHeaight = 250;
 
-  Postdetails({this.user, this.post, this.like,this.posted});
+  Postdetails({this.user, this.post, this.like, this.posted, this.name});
 
   @override
   _PostdetailsState createState() => _PostdetailsState();
@@ -21,10 +22,8 @@ class _PostdetailsState extends State<Postdetails> {
 
   List<Map<String, String>> comments = [
     {'user': 'Tamer', 'image': '1.jpg', 'comt': 'this is great pic'},
-    {'user': 'Ali', 'image': 'm.jpg', 'comt': 'this is great pic'},
-    {'user': 'Hassan', 'image': 'a.jpg', 'comt': 'this is great pic'},
-    // {'user': 'Abdo', 'image': 'a.jpg', 'comt': 'this is great pic'},
-    // {'user': 'said', 'image': 'm.jpg', 'comt': 'this is great pic'}
+    {'user': 'badawy', 'image': 'badawy.jpg', 'comt': 'this is great pic'},
+    {'user': 'Hassan', 'image': 'hassan.jpg', 'comt': 'this is great pic'},
   ];
 
   @override
@@ -56,81 +55,88 @@ class _PostdetailsState extends State<Postdetails> {
                           Container(
                             child: Column(
                               children: <Widget>[
-                                // IconButton(
-                                //     icon: Icon(Icons.arrow_back),
-                                //     onPressed: () {
-                                //       Navigator.pop(context);
-                                //     }),
                                 ListTile(
                                   leading: CircleAvatar(
                                     radius: 30,
                                     backgroundImage:
                                         AssetImage('images/${widget.user}'),
                                   ),
-                                  title: Text('Abdo Nasr'),
-                                  subtitle: Text("${widget.posted.substring(0,16)}"),
+                                  title: Text("${widget.name}"),
+                                  subtitle:
+                                      Text("${widget.posted.substring(0, 16)}"),
                                   trailing: IconButton(
                                       icon: Icon(Icons.more_horiz),
                                       onPressed: () {
                                         print('more');
                                       }),
                                 ),
-                                Stack(children: [
-                                  Container(
-                                    margin: EdgeInsets.all(5),
-                                    width: double.infinity,
-                                    height: widget.mainImageHeaight,
-                                    decoration: BoxDecoration(
-                                      color: Colors.black12,
-                                      borderRadius: BorderRadius.circular(10),
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              'images/${widget.post}'),
-                                          fit: BoxFit.fill),
-                                    ),
+                                /////////////////////////////////////////////////////////////////////////
+                                Container(
+                                  margin: EdgeInsets.all(5),
+                                  width: double.infinity,
+                                  height: widget.mainImageHeaight,
+                                  decoration: BoxDecoration(
+                                    color: Colors.black12,
+                                    borderRadius: BorderRadius.circular(10),
+                                    image: DecorationImage(
+                                        image:
+                                            AssetImage('images/${widget.post}'),
+                                        fit: BoxFit.fill),
                                   ),
-                                  // Positioned(
-                                  // top: widget.mainImageHeaight-20,
-                                  // left: 15,
-                                  // child: Row(children: <Widget>[
-                                  //   Icon(Icons.favorite_border,color: Colors.red, size: 20,),
-                                  //   Text('200'),
-                                  // ],), ),
-                                ]),
+                                ),
+
+                                //////////////////////////////////////////////////////////////
                                 SizedBox(
                                   height: 20,
                                 ),
                                 Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceAround,
-                                  children: <Widget>[
-                                    Row(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.favorite_border,
-                                          // color: Colors.red,
-                                          size: 20,
-                                        ),
-                                        SizedBox(
-                                          width: 7,
-                                        ),
-                                        Text('${widget.like} likes'),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.chat,
-                                          // color: Colors.red,
-                                          size: 20,
-                                        ),
-                                        SizedBox(
-                                          width: 7,
-                                        ),
-                                        Text('200 comments'),
-                                      ],
-                                    ),
-                                  ],
+                                  // children: <Widget>[
+                                  //   Row(
+                                  //     children: <Widget>[
+                                  //       IconButton(
+                                  //           icon: widget.likeDone
+                                  //               ? Icon(
+                                  //                   Icons.favorite,
+                                  //                   color: Colors.red,
+                                  //                 )
+                                  //               : Icon(
+                                  //                   Icons.favorite_border,
+                                  //                   color: Colors.black38,
+                                  //                 ),
+                                  //           iconSize: 20,
+                                  //           onPressed: () {
+                                  //             setState(() {
+                                  //               if (widget.likeDone) {
+                                  //                 widget.like -= 1;
+                                  //               } else {
+                                  //                 widget.like += 1;
+                                  //               }
+                                  //               widget.likeDone =
+                                  //                   !widget.likeDone;
+                                  //             });
+                                  //           }),
+                                  //       SizedBox(
+                                  //         width: 7,
+                                  //       ),
+                                  //       Text('${widget.like} likes'),
+                                  //     ],
+                                  //   ),
+                                  //   Row(
+                                  //     children: <Widget>[
+                                  //       Icon(
+                                  //         Icons.chat,
+                                  //         // color: Colors.red,
+                                  //         size: 20,
+                                  //       ),
+                                  //       SizedBox(
+                                  //         width: 7,
+                                  //       ),
+                                  //       Text('${comments.length} comments'),
+                                  //     ],
+                                  //   ),
+                                  // ],
                                 ),
                               ],
                             ),
@@ -148,22 +154,25 @@ class _PostdetailsState extends State<Postdetails> {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20.0)),
                     child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 1, horizontal: 1),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: comments
-                              .map(
-                                (e) => new Comment(
-                                    image: e['image'],
-                                    user: e['user'],
-                                    comt: e['comt']),
-                              )
-                              .toList(),
+                      padding: EdgeInsets.symmetric(vertical: 1, horizontal: 1),
+                      child: Container(
+                        height: 400,
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: comments
+                                .map(
+                                  (e) => new Comment(
+                                      image: e['image'],
+                                      user: e['user'],
+                                      comt: e['comt']),
+                                )
+                                .toList(),
+                          ),
                         ),
                       ),
                     ),
                   ),
+                  /////////////////////////////////////////////////////////////////
                   SizedBox(
                     height: 10,
                   ),
@@ -218,5 +227,3 @@ class _PostdetailsState extends State<Postdetails> {
     );
   }
 }
-
-

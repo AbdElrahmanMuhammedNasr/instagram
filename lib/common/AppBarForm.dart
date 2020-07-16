@@ -32,7 +32,7 @@ class AppBarF extends StatelessWidget with PreferredSizeWidget {
        
       ),
     ): Container(
-      height: 65,
+      height: 70,
       child: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.white,
