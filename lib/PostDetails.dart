@@ -4,14 +4,14 @@ import 'package:instegram/common/AppBarForm.dart';
 import 'package:instegram/common/BottomBarform.dart';
 
 class Postdetails extends StatefulWidget {
-  String user;
+  String userImage;
   String name;
   String post;
   int like;
   String posted;
   double mainImageHeaight = 250;
 
-  Postdetails({this.user, this.post, this.like, this.posted, this.name});
+  Postdetails({this.userImage, this.post, this.like, this.posted, this.name});
 
   @override
   _PostdetailsState createState() => _PostdetailsState();
@@ -59,7 +59,7 @@ class _PostdetailsState extends State<Postdetails> {
                                   leading: CircleAvatar(
                                     radius: 30,
                                     backgroundImage:
-                                        AssetImage('images/${widget.user}'),
+                                        AssetImage('images/${widget.userImage}'),
                                   ),
                                   title: Text("${widget.name}"),
                                   subtitle:
@@ -192,7 +192,7 @@ class _PostdetailsState extends State<Postdetails> {
                             child: CircleAvatar(
                               radius: 25,
                               backgroundImage:
-                                  AssetImage('images/${widget.user}'),
+                                  AssetImage('images/${widget.userImage}'),
                             ),
                           ),
                           suffixIcon: IconButton(
@@ -201,7 +201,7 @@ class _PostdetailsState extends State<Postdetails> {
                               setState(() {
                                 comments.add({
                                   'user': 'tamer',
-                                  'image': widget.user,
+                                  'image': widget.userImage,
                                   'comt': comment.text
                                 });
                                 comment.text = '';

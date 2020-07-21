@@ -29,7 +29,7 @@ class _MyAppState extends State<MyApp> {
 
   List<Map<String, dynamic>> userPost = [
       {
-      'user': 'a.jpg',
+      'userImage': 'a.jpg',
       'post': 'elfar.jpg',
       'name': 'AdElrahman Nasr',
       'job':'PH',
@@ -37,7 +37,7 @@ class _MyAppState extends State<MyApp> {
       'posted': new DateTime.now()
     },
     {
-      'user': 'a.jpg',
+      'userImage': 'a.jpg',
       'post': 'badawy.jpg',
       'name': 'Mostafa',
       'job':'PH',
@@ -45,7 +45,7 @@ class _MyAppState extends State<MyApp> {
       'posted': new DateTime.now()
     },
     {
-      'user': 'm.jpg',
+      'userImage': 'm.jpg',
       'post': '1.jpg',
       'name': 'AbdElraham',
       'job':'ED',
@@ -53,7 +53,7 @@ class _MyAppState extends State<MyApp> {
       'posted': new DateTime.now()
     },
     {
-      'user': 'a.jpg',
+      'userImage': 'a.jpg',
       'post': 'a.jpg',
       'name': 'Mostafa',
       'job':'ED',
@@ -61,7 +61,7 @@ class _MyAppState extends State<MyApp> {
       'posted': new DateTime.now()
     },
     {
-      'user': 'm.jpg',
+      'userImage': 'm.jpg',
       'post': '7.jpg',
       'name': 'AbdElraham',
       'job':'PH',
@@ -69,7 +69,7 @@ class _MyAppState extends State<MyApp> {
       'posted': new DateTime.now()
     },
     {
-      'user': 'a.jpg',
+      'userImage': 'a.jpg',
       'post': '8.jpg',
       'name': 'AbdElraham',
       'job':'PH',
@@ -77,7 +77,7 @@ class _MyAppState extends State<MyApp> {
       'posted': new DateTime.now()
     },
     {
-      'user': 'm.jpg',
+      'userImage': 'm.jpg',
       'post': '7.jpg',
       'name': 'Mostafa',
       'job':'PH',
@@ -85,7 +85,7 @@ class _MyAppState extends State<MyApp> {
       'posted': new DateTime.now()
     },
     {
-      'user': 'a.jpg',
+      'userImage': 'a.jpg',
       'post': '8.jpg',
       'name': 'Mostafa',
       'job':'ED',
@@ -137,7 +137,7 @@ class _MyAppState extends State<MyApp> {
               Column(
                   children: userPost
                       .map((e) => new Posts(
-                          user: e['user'],
+                          userImage: e['userImage'],
                           post: e['post'],
                           name: e['name'],
                           job: e['job'],

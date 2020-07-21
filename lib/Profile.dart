@@ -191,7 +191,7 @@ Widget _profilePost(userImage, context, image, image1, image2) {
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => Postdetails(
-                user: userImage,
+                userImage: userImage,
                 post: image,
                 like: 20,
                 posted: new DateTime.now().toString(),
@@ -209,7 +209,7 @@ Widget _profilePost(userImage, context, image, image1, image2) {
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => Postdetails(
-                user: userImage,
+                userImage: userImage,
                 post: image1,
                 like: 20,
                 posted: new DateTime.now().toString(),
@@ -227,7 +227,7 @@ Widget _profilePost(userImage, context, image, image1, image2) {
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => Postdetails(
-                user: userImage,
+                userImage: userImage,
                 post: image2,
                 like: 20,
                 posted: new DateTime.now().toString(),

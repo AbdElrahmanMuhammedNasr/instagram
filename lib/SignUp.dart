@@ -23,42 +23,43 @@ class _SignUp extends State<SignUp> {
               ],
             ),
           ),
-          child: SafeArea(
-            child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 30, horizontal: 25),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Column(
-                      children: <Widget>[
-                        Text(
-                          'Sign Up',
-                          style: TextStyle(fontSize: 30, color: Colors.white),
-                        ),
-                      ],
+          child: Expanded(
+            child: SafeArea(
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 30, horizontal: 25),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            'Sign Up',
+                            style: TextStyle(fontSize: 30, color: Colors.white),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(60),
-                            topRight: Radius.circular(60),
-                            bottomLeft: Radius.circular(0),
-                            bottomRight: Radius.circular(0),
-                          )),
-                      child: Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 30, vertical: 50),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(60),
+                              topRight: Radius.circular(60),
+                              bottomLeft: Radius.circular(0),
+                              bottomRight: Radius.circular(0),
+                            )),
+                      child: Container(
+                        margin:
+                            EdgeInsets.symmetric(vertical: 50, horizontal: 20),
                         child: Column(
                           children: <Widget>[
+
                             Container(
                               decoration: BoxDecoration(
-                                  // color: Colors.orangeAccent,
                                   borderRadius: BorderRadius.circular(10),
                                   border: Border.all(color: Colors.black)),
                               child: Padding(
@@ -75,7 +76,6 @@ class _SignUp extends State<SignUp> {
                             ),
                             Container(
                               decoration: BoxDecoration(
-                                  // color: Colors.orangeAccent,
                                   borderRadius: BorderRadius.circular(10),
                                   border: Border.all(color: Colors.black)),
                               child: Padding(
@@ -94,7 +94,6 @@ class _SignUp extends State<SignUp> {
                             ),
                             Container(
                               decoration: BoxDecoration(
-                                  // color: Colors.orangeAccent,
                                   borderRadius: BorderRadius.circular(10),
                                   border: Border.all(color: Colors.black)),
                               child: Padding(
@@ -112,7 +111,6 @@ class _SignUp extends State<SignUp> {
                             ),
                             Container(
                               decoration: BoxDecoration(
-                                  // color: Colors.orangeAccent,
                                   borderRadius: BorderRadius.circular(10),
                                   border: Border.all(color: Colors.black)),
                               child: Padding(
@@ -130,7 +128,6 @@ class _SignUp extends State<SignUp> {
                             ),
                             Container(
                               decoration: BoxDecoration(
-                                  // color: Colors.orangeAccent,
                                   borderRadius: BorderRadius.circular(10),
                                   border: Border.all(color: Colors.black)),
                               child: Padding(
@@ -192,7 +189,11 @@ class _SignUp extends State<SignUp> {
                               },
                               child: InkWell(
                                 onTap: () {
-                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => MyApp(),),);
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => MyApp(),
+                                    ),
+                                  );
                                 },
                                 child: Container(
                                   height: 50,
@@ -218,10 +219,11 @@ class _SignUp extends State<SignUp> {
                           ],
                         ),
                       ),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

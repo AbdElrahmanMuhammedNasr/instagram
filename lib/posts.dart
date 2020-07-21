@@ -3,13 +3,13 @@ import 'package:instegram/PostDetails.dart';
 import 'package:instegram/Profile.dart';
 
 class Posts extends StatefulWidget {
-  String user;
+  String userImage;
   String post;
   String name;
   String posted;
   int likes;
   String job;
-  Posts({this.user, this.post, this.name, this.likes, this.posted, this.job});
+  Posts({this.userImage, this.post, this.name, this.likes, this.posted, this.job});
 
   @override
   _PostsState createState() => _PostsState();
@@ -46,14 +46,14 @@ class _PostsState extends State<Posts> {
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => Profile(
-                              userImage: '${widget.user} ',
+                              userImage: '${widget.userImage}',
                               userName: widget.name,
                             ),
                           ));
                         },
                         child: CircleAvatar(
                           radius: 30,
-                          backgroundImage: AssetImage('images/${widget.user}'),
+                          backgroundImage: AssetImage('images/${widget.userImage}'),
                         ),
                       ),
                       title: Text('${widget.name} - ( ${widget.job} )'),
@@ -136,7 +136,7 @@ class _PostsState extends State<Posts> {
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
                                         builder: (context) => Postdetails(
-                                          user: widget.user,
+                                          userImage: widget.userImage,
                                           name: widget.name,
                                           post: widget.post,
                                           like: widget.likes,
